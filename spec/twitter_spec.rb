@@ -48,4 +48,3 @@ describe TwitterApi do
     end
   end
 end
-
