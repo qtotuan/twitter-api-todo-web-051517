@@ -26,10 +26,14 @@ class TwitterApi
   def find_followers_for(username)
     followers = client.followers(username)
     first_users = followers.take(10)
+
+    first_users.map! do |user|
+      user
+    end
   end
 
   def homepage_timeline
-    client.home_timeline
+    client.home_timeline.collect! { |tweet| tweet }
   end
 
 end
@@ -41,6 +45,6 @@ end
 
 # tweet_client = TwitterApi.new
 # puts tweet_client.most_recent_friend
-# puts tweet_client.find_user_for("USERNAME HERE")
-# puts tweet_client.find_followers_for("USERNAME HERE")
+# puts tweet_client.find_user_for("qtotuan")
+# puts tweet_client.find_followers_for("qtotuan")
 # puts tweet_client.homepage_timeline
